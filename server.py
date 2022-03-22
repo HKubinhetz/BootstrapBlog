@@ -9,14 +9,13 @@ def homepage():
     return render_template('index.html')
 
 
-# TODO - AINDA NÃO ESTÃO FUNCIONANDO OS LINKS ABAIXO
 @app.route("/about/")
-def homepage():
+def about_page():
     return render_template('about.html')
 
 
 @app.route("/contact/")
-def homepage():
+def contact_page():
     return render_template('contact.html')
 
 

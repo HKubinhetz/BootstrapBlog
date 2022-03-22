@@ -9,5 +9,16 @@ def homepage():
     return render_template('index.html')
 
 
+# TODO - AINDA NÃO ESTÃO FUNCIONANDO OS LINKS ABAIXO
+@app.route("/about/")
+def homepage():
+    return render_template('about.html')
+
+
+@app.route("/contact/")
+def homepage():
+    return render_template('contact.html')
+
+
 if __name__ == "__main__":
     app.run(debug=True)

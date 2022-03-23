@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Clean Blog - Start Bootstrap Theme</title>
+        <title>Kubinha Blog</title>
         <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
@@ -42,7 +42,7 @@
                     <!-- Post preview-->
                     {% for post in posts %}
                     <div class="post-preview">
-                        <a href="post.html">
+                        <a href="../post/{{post['id']}}">
                             <h2 class="post-title">{{post["title"]}}</h2>
                             <h3 class="post-subtitle">{{post["subtitle"]}}</h3>
                         </a>

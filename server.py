@@ -24,5 +24,14 @@ def contact_page():
     return render_template('contact.html', path=img_path)
 
 
+@app.route("/post/<int:postid>")
+def post_page(postid):
+    print(postid)
+    img_path = "../static/assets/img/post-bg.jpg"
+    posts = getposts.get_posts()
+    my_post = posts[postid-1]
+    return render_template('post.html', path=img_path, post=my_post)
+
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,6 +1,8 @@
 from flask import Flask
+from flask import request
 from flask import render_template
 import getposts
+import sendmail
 
 app = Flask(__name__)
 
@@ -18,10 +20,29 @@ def about_page():
     return render_template('about.html', path=img_path)
 
 
-@app.route("/contact/")
-def contact_page():
-    img_path = "../static/assets/img/contact-bg.jpg"
-    return render_template('contact.html', path=img_path)
+# @app.route("/contact/")
+# def contact_page():
+#     img_path = "../static/assets/img/contact-bg.jpg"
+#     return render_template('contact.html', path=img_path)
+
+
+@app.route("/contact/", methods=['GET', 'POST'])
+def form_accepted():
+    if request.method == "GET":
+        img_path = "../static/assets/img/contact-bg.jpg"
+        return render_template('contact.html', path=img_path)
+    elif request.method == "POST":
+        message = ""
+        form_info = request.form.to_dict()
+        print("Form Data:")
+        for info in form_info:
+            message_line = f"{info}: {form_info[info]}\n"
+            message = message + message_line
+            print(message_line)
+        sendmail.mail_sender(message)
+        img_path = "../static/assets/img/contact-bg.jpg"
+        return render_template('contact-success.html', path=img_path)
+
 
 
 @app.route("/post/<int:postid>")
